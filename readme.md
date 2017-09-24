@@ -20,7 +20,7 @@ C = 50
   Example API input:
   ``` curl http://localhost:8888/route?id={id} ```
 
-##Benchmark
+# Benchmark
 
 Testing platform: Intel i5-2550K 3.4GHz x 4
 
