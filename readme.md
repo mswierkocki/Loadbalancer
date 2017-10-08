@@ -46,10 +46,11 @@ Testing platform: Intel i5-2550K 3.4GHz x 4
 
 
  `ab -n1000000 -c10 http://localhost:8888/route?id= `
- 
+
+
 - Results for Extern CRC32:
-   ```
- Server Software:        
+```
+Server Software:        
 Server Hostname:        localhost
 Server Port:            8888
 
@@ -84,9 +85,11 @@ Percentage of the requests served within a certain time (ms)
   98%      2
   99%      2
  100%    146 (longest request)
-  ```
+```
+  
 - Results for Own hash algorithm:
-  ```
+  
+```
 Server Software:        
 Server Hostname:        localhost
 Server Port:            8888
@@ -122,9 +125,11 @@ Percentage of the requests served within a certain time (ms)
   98%      2
   99%      2
  100%    146 (longest request)
-   ```
+```
+
 - Results for String.hashCode algorithm:
-  ```
+
+```
 Server Software:        
 Server Hostname:        localhost
 Server Port:            8888
@@ -160,8 +165,7 @@ Percentage of the requests served within a certain time (ms)
   98%      2
   99%      3
  100%    137 (longest request)
-
-  ```
+```
  ### Summary
 There is no significant difference between starts for individual hashing algorithms in case of number of supported requests. All are in the 14k +- 1k range per second. However, there is a difference between the way the algorithms generate hashes.
 Used CRC algorithm is commonly used to calculate checksum for making sure there where no errors while transmiting data.
