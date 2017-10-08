@@ -12,7 +12,7 @@ To run use:
  
 Configuration is stored in file **main/resources/config.properties** 
 
-*each group must define name and weight that sums up to 100  
+each group must define name and weight that sums up to 100  
 
 ```
 group[n].name = name of group
@@ -32,12 +32,12 @@ group[2].name=C
 group[2].weigth=50
 
   ```
-* hash_method can be set with 3 options:
---Extern for CRC32 hashing method;
---Own for CustomHash method witch can be found in utis package
---None for using default String.toHash
+Hash_method can be set with 3 options:
+ - `Extern` for CRC32 hashing method;
+ - `Own` for CustomHash method witch can be found in utis package
+ - `None` for using default String.toHash
   
-*  Example API input:
+Example API input:
   ``` curl http://localhost:8888/route?id={id} ```
 
 #### Benchmark
@@ -47,7 +47,7 @@ Testing platform: Intel i5-2550K 3.4GHz x 4
 
  `ab -n1000000 -c10 http://localhost:8888/route?id= `
  
- -* Results for Extern CRC32:
+- Results for Extern CRC32:
    ```
  Server Software:        
 Server Hostname:        localhost
@@ -85,7 +85,7 @@ Percentage of the requests served within a certain time (ms)
   99%      2
  100%    146 (longest request)
   ```
--* Results for Own hash algorithm:
+- Results for Own hash algorithm:
   ```
 Server Software:        
 Server Hostname:        localhost
@@ -123,7 +123,7 @@ Percentage of the requests served within a certain time (ms)
   99%      2
  100%    146 (longest request)
    ```
--* Results for String.hashCode algorithm:
+- Results for String.hashCode algorithm:
   ```
 Server Software:        
 Server Hostname:        localhost
@@ -162,3 +162,8 @@ Percentage of the requests served within a certain time (ms)
  100%    137 (longest request)
 
   ```
+ ### Summary
+There is no significant difference between starts for individual hashing algorithms in case of number of supported requests. All are in the 14k +- 1k range per second. However, there is a difference between the way the algorithms generate hashes.
+Used CRC algorithm is commonly used to calculate checksum for making sure there where no errors while transmiting data.
+String.hashCode has linear computational complexity same as CRC.
+CustomHash algorithm is not yet constant time.
