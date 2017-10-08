@@ -1,24 +1,25 @@
 # LoadBalancer
 Simple REST application that route traffic to different backends depending on a group that user falls into.
 
-# Usage
+#### Usage
 Application binds to ``localhost`` on port ``8888``
 
 To run use:
-> sh
+> 
 >	 ./gradlew run
 >
 
  
-Configuration is stored in file main/resources/config.properties 
+Configuration is stored in file **main/resources/config.properties** 
 
-each group must define name and weight that sums up to 100  
+*each group must define name and weight that sums up to 100  
 
 ```
 group[n].name = name of group
 group[n].weigth = weight of group
 ```
-where n is corresponding group number from 0..N-1 where N is number of all groups __
+where n is corresponding group number from 0..N-1 where N is number of all groups
+
 E.g.:
 
   ```
@@ -31,22 +32,22 @@ group[2].name=C
 group[2].weigth=50
 
   ```
--  hash_method can be set with 3 options:
-  -Extern for CRC32 hashing method;
-  -Own for CustomHash method witch can be found in utis package
-  -None for using default String.toHash
+* hash_method can be set with 3 options:
+--Extern for CRC32 hashing method;
+--Own for CustomHash method witch can be found in utis package
+--None for using default String.toHash
   
--  Example API input:
+*  Example API input:
   ``` curl http://localhost:8888/route?id={id} ```
 
-### Benchmark
+#### Benchmark
 
 Testing platform: Intel i5-2550K 3.4GHz x 4
 
 
- ``ab -n1000000 -c10 http://localhost:8888/route?id= ``
+ `ab -n1000000 -c10 http://localhost:8888/route?id= `
  
- - Results for Extern CRC32:
+ -* Results for Extern CRC32:
    ```
  Server Software:        
 Server Hostname:        localhost
@@ -84,7 +85,7 @@ Percentage of the requests served within a certain time (ms)
   99%      2
  100%    146 (longest request)
   ```
-- Results for Own hash algorithm:
+-* Results for Own hash algorithm:
   ```
 Server Software:        
 Server Hostname:        localhost
@@ -122,7 +123,7 @@ Percentage of the requests served within a certain time (ms)
   99%      2
  100%    146 (longest request)
    ```
-- Results for String.hashCode algorithm:
+-* Results for String.hashCode algorithm:
   ```
 Server Software:        
 Server Hostname:        localhost
