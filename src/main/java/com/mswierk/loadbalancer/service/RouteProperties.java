@@ -77,16 +77,19 @@ public class RouteProperties {
 			case "E":
 			case "Extern":
 				method = METHOD_EXTERN;
+				System.out.println("Using Extern hashing algorithm");
 				break;
 			case "o":
 			case "O":
 			case "Own":
 				method = METHOD_OWN;
+				System.out.println("Using Own hashing algorithm");
 				break;
 			case "None":
 			case "Null":
 			default:
 				method =  METHOD_STRING;
+				System.out.println("Using String.hashCode algorithm");
 				break;
 							
 		}
