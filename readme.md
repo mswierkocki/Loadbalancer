@@ -9,14 +9,28 @@ To run use:
 	 ./gradlew run
 
  
-Configuration is stored in file config.properties.
+Configuration is stored in file main/resources/config.properties 
+each group must define name and weight that sums up to 100
+group[n].name = name of group
+group[n].weigth = weight of group
+where n is corresponding group number from 0..N-1 where N is number of all groups
 E.g.:
 
   ```
-A = 30
-B = 20
-C = 50
+hash_method=Extern
+group[0].name=A
+group[0].weigth=30
+group[1].name=B
+group[1].weigth=20
+group[2].name=C
+group[2].weigth=50
+
   ```
+  hash_method can be set with 3 options:
+  -Extern for CRC32 hashing method;
+  -Own for CustomHash method witch can be found in utis package
+  -None for using default String.toHash
+  
   Example API input:
   ``` curl http://localhost:8888/route?id={id} ```
 
