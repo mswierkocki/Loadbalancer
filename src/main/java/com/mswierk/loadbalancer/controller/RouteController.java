@@ -1,4 +1,4 @@
-package com.mswierk.loadbalancer;
+package com.mswierk.loadbalancer.controller;
 
 import javax.validation.constraints.NotNull;
 
@@ -8,17 +8,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mswierk.loadbalancer.service.RouteService;
+
 /**
  * Route handler for rest controller
  * @author Marcin Świerkocki
  *
  */
-@RestController
-public class RouteHandler {
+
+@RestController("RouteController")
+public class RouteController {
 	private final RouteService routeService;
 
 	@Autowired
-	RouteHandler(RouteService aRouteService) {
+	RouteController(RouteService aRouteService) {
 		routeService = aRouteService;
 	}
 
